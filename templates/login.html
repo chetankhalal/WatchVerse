@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - WatchVerse</title>
+    <link rel="stylesheet" href="/static/css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <form action="" method="POST">
+        <div class="watchverse-logo">
+            <a href="/"> <span class="watch">Watch</span><span class="verse">Verse</span> </a>
+        </div>
+        <div class="Login">
+
+            <div class="LoginCard">
+
+                <h1>Login to WatchVerse</h1>
+                <p class="subtext">Log in to WatchVerse with your near profile account and start your stream.</p>
+
+                <div class="msg"> {{msg}} </div>
+                
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Email" name="email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Password" name="password" required>
+
+                <div class="forgot-wrap">
+                    <a href="#">Forgot password?</a>
+                </div>
+
+                <button class="login-btn">Login</button>
+
+                <p class="bottom-text">
+                    Don't have an account?
+                    <a href="/signin">Sign up</a>
+                </p>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

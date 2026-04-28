@@ -1,0 +1,15 @@
+{% extends 'template.html' %}
+{% block movies %}
+{% for movie in films.Search %}
+<div class="col-sm m-3 flex-row text-center">
+    <div class="card col-lg-2" style="width: 10rem;">
+        <img src=" {{movie.Poster}} " class="card-img-top template-images" alt="...">
+        <div class="card-body">
+            <h5 class="card-title"> {{movie.Title}} </h5>
+            <h6 class="card-text"> {{movie.Year}} </h6>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock movies %}

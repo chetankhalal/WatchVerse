@@ -1,0 +1,529 @@
+:root {
+    /* Color System */
+    --bg-main: #0F1117;
+    --bg-card: #191C24;
+    --bg-nav: rgba(17, 17, 17, 0.6);
+    --gradient-primary: linear-gradient(90deg, #7B2FF7, #C84CF0, #4FACFE);
+    --text-primary: #FFFFFF;
+    --text-secondary: #9CA3AF;
+    --border-subtle: #272A34;
+    --glow-primary: 0px 0px 25px rgba(153, 51, 255, 0.4);
+    --radius-lg: 20px;
+    --radius-md: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+
+}
+
+/* --- Navigation --- */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-nav);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.watchverse-logo {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.watchverse-logo a,
+.watchverse-logo a:visited,
+.watchverse-logo a:hover,
+.watchverse-logo a:active {
+    text-decoration: none;
+    border-bottom: none;
+    box-shadow: none;
+}
+
+.watchverse-logo .watch {
+    color: var(--text-primary);
+}
+
+.watchverse-logo .verse {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--text-primary);
+}
+
+.btn-login {
+    padding: 12px 24px;
+    border-radius: 12px;
+    color: white;
+    text-decoration: none;
+
+    background: rgba(17, 17, 17, 0.6);
+    border: none;
+    cursor: pointer;
+
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+
+    transition: all 0.4s ease;
+}
+
+/* 🔥 Gradient Border */
+.btn-login::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 3px;
+
+    background: linear-gradient(90deg, #7B2FF7, #C84CF0, #4FACFE);
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    z-index: -1;
+}
+
+/* 🔥 Hover Effect */
+.btn-login:hover {
+    background: linear-gradient(90deg, #7B2FF7, #C84CF0, #4FACFE);
+    box-shadow: 0 0 20px rgba(200, 76, 240, 0.6);
+}
+
+/* --- Hero Section --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 10%;
+    background: radial-gradient(circle at center, rgba(77, 148, 255, 0.1) 0%, transparent 70%);
+    background-image: url('../img/1776427962483.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* Ensures image covers the entire screen */
+    background-position: center;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    background-color: black;
+    /* Semi-transparent black */
+    opacity: 0.7;
+    /* Blurs what is behind the overlay */
+}
+
+.hero h1 {
+    font-size: 64px;
+    line-height: 1.1;
+    font-weight: 800;
+    margin-bottom: 20px;
+    max-width: 1000px;
+    z-index: 1;
+}
+
+.hero p {
+    color: var(--text-secondary);
+    font-size: 26px;
+    max-width: 900px;
+    margin-bottom: 40px;
+    z-index: 1;
+}
+
+.cta-group {
+    display: flex;
+    gap: 20px;
+    z-index: 1;
+    align-items: flex-start;
+}
+
+.btn-main {
+    padding: 16px 32px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 24px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    position: relative;
+    padding: 12px 24px;
+    border-radius: 12px;
+    color: white;
+
+    /* 👇 Gradient with opacity */
+    background: var(--gradient-primary);
+
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* 🔥 Gradient Border Layer (hidden initially) */
+.btn-primary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 3px;
+    /* border size */
+    background: linear-gradient(90deg, #7B2FF7, #C84CF0, #4FACFE);
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    opacity: 0;
+    /* 👈 hidden initially */
+    transition: opacity 0.4s ease;
+
+    z-index: -1;
+}
+
+/* 🔥 Hover → only border */
+.btn-primary:hover {
+    background: rgba(17, 17, 17, 0.7);
+    /* dark inside */
+    backdrop-filter: blur(8px);
+    /* optional glass effect */
+}
+
+.btn-primary:hover::before {
+    opacity: 1;
+    /* 👈 show border */
+}
+
+.btn-secondary {
+    position: relative;
+    padding: 12px 24px;
+    border-radius: 12px;
+    color: white;
+    background: rgba(17, 17, 17, 0.6);
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* 🔥 Gradient Border */
+.btn-secondary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 4px;
+    background: linear-gradient(90deg, #7B2FF7, #C84CF0, #4FACFE);
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    z-index: -1;
+}
+
+.btn-secondary:hover {
+    background: var(--gradient-primary);
+    box-shadow: var(--glow-primary);
+    opacity: 1;
+}
+
+.btn-main:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.1);
+}
+
+/* --- Features Section --- */
+.features {
+    padding: 100px 8%;
+}
+
+.section-title {
+    text-align: left;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+
+.card {
+    margin: 0 auto;
+    padding: 2em;
+    width: 300px;
+    background: #1c1f2b;
+    text-align: left;
+    border-radius: 10px;
+    position: relative;
+
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    background: conic-gradient(from var(--angle),
+            #7B2FF7,
+            #C84CF0,
+            #4FACFE,
+            #7B2FF7);
+    filter: blur(25px);
+    opacity: 0.3;
+    z-index: -2;
+    animation: spin 6s linear infinite;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), #006aff, #ff4545);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 3px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
+    filter: blur(0.5rem);
+    opacity: 0.7;
+}
+
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+
+    to {
+        --angle: 360deg;
+    }
+}
+
+.card-logo {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 40px !important;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(200, 76, 240, 0.6);
+    display: block;
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.how-it-works {
+    padding: 100px 8%;
+}
+
+.how-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.how-card {
+    text-align: center;
+    color: white;
+}
+
+.how-logo {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 80px !important;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(200, 76, 240, 0.6);
+    display: block;
+}
+
+/* 🔥 Step items (icon + text) */
+
+/* Container row layout */
+/* Container */
+.steps-container {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 300px;
+}
+
+/* Each step */
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* ICON */
+.icon {
+    margin-left: 50px;
+    font-size: 64px !important;
+    background: linear-gradient(90deg, #7B2FF7, #C84CF0, #4FACFE);
+    text-shadow: 0 0 10px rgba(200, 76, 240, 0.6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+}
+
+/* TEXT (perfectly under icon) */
+.step p {
+    margin-top: 12px;
+    font-size: 16px;
+    color: #ccc;
+    margin-left: 50px;
+    text-align: center;
+}
+
+/* LINE */
+.step::after {
+    content: "";
+    position: absolute;
+    top: 36px;
+    /* middle of 72px icon */
+    left: calc(100% + 50px);
+    width: 250px;
+    height: 2px;
+    background: linear-gradient(90deg, #7B2FF7, #C84CF0, #4FACFE);
+}
+
+/* DOT */
+.step::before {
+    content: "";
+    position: absolute;
+    top: 33px;
+    left: calc(100% + 175px);
+    width: 8px;
+    height: 8px;
+    background: #C84CF0;
+    border-radius: 50%;
+}
+
+/* Remove last line & dot */
+.step:last-child::after,
+.step:last-child::before {
+    display: none;
+}
+
+/* --- Stats/Social Proof --- */
+.stats {
+    background: var(--bg-card);
+    padding: 60px 8%;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.stat-item h2 {
+    font-size: 2.5rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- Footer --- */
+footer {
+    padding: 80px 8% 40px;
+    text-align: center;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.footer-links {
+    margin-bottom: 30px;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+.copyright {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-top: 20px;
+    opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .cta-group {
+        flex-direction: column;
+        width: 100%;
+    }
+}

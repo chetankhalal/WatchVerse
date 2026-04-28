@@ -1,0 +1,247 @@
+:root {
+    --bg-main: #0F1117;
+    --bg-card: #191C24;
+    --gradient-primary: linear-gradient(90deg, #7B2FF7, #C84CF0, #4FACFE);
+    --text-primary: #FFFFFF;
+    --text-secondary: #9CA3AF;
+    --border-subtle: #272A34;
+    --radius-lg: 20px;
+    --radius-md: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-primary);
+    overflow: hidden;
+}
+
+.Login {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+.LoginCard {
+    position: relative;
+    width: 100%;
+    max-width: 390px;
+    padding: 70px 28px 28px;
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.LoginCard::before {
+    content: "";
+    position: absolute;
+    inset: -38px;
+    border-radius: 38px;
+    background: conic-gradient(from var(--angle),
+            #7B2FF7,
+            #C84CF0,
+            #4FACFE,
+            black,
+            black,
+            #7B2FF7,
+            #C84CF0,
+            #4FACFE,
+            black,
+            black);
+    filter: blur(60px);
+    opacity: 0.55;
+    z-index: -2;
+    animation: spin 5s linear infinite;
+}
+
+.LoginCard::after {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    background: var(--bg-main);
+    border-radius: 24px;
+    z-index: -1;
+}
+
+.watchverse-logo {
+    position: absolute;
+    top: 20px;
+    left: 22px;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+}
+
+.watchverse-logo a,
+.watchverse-logo a:visited,
+.watchverse-logo a:hover,
+.watchverse-logo a:active {
+    text-decoration: none;
+    border-bottom: none;
+    box-shadow: none;
+}
+
+.watchverse-logo .watch {
+    color: var(--text-primary);
+}
+
+.watchverse-logo .verse {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.LoginCard h1 {
+    text-align: center;
+    font-size: 2rem;
+    line-height: 1.2;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.msg {
+    font-size: 16px;
+    color: red;
+    z-index: 1;
+}
+
+.subtext {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.LoginCard label {
+    color: var(--text-primary);
+    font-size: 0.92rem;
+    font-weight: 500;
+    margin-top: 6px;
+}
+
+.LoginCard input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+    background: #111318;
+    color: var(--text-primary);
+    outline: none;
+    font-size: 0.95rem;
+    transition: 0.3s ease;
+}
+
+.LoginCard input::placeholder {
+    color: var(--text-secondary);
+}
+
+.LoginCard input:focus {
+    border-color: #7B2FF7;
+    box-shadow: 0 0 12px rgba(123, 47, 247, 0.3);
+}
+
+.forgot-wrap {
+    text-align: right;
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+
+.forgot-wrap a {
+    color: #8fb7ff;
+    text-decoration: none;
+    font-size: 0.88rem;
+}
+
+.forgot-wrap a:hover {
+    text-decoration: underline;
+}
+
+.login-btn {
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px;
+    border: none;
+    border-radius: var(--radius-md);
+    background: var(--gradient-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 0 22px rgba(123, 47, 247, 0.35);
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 28px rgba(79, 172, 254, 0.45);
+}
+
+.bottom-text {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-top: 12px;
+    font-size: 0.92rem;
+}
+
+.bottom-text a {
+    color: #4FACFE;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.bottom-text a:hover {
+    text-decoration: underline;
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+
+    to {
+        --angle: 360deg;
+    }
+}
+
+@media (max-width: 480px) {
+    .LoginCard {
+        max-width: 100%;
+        padding: 68px 20px 24px;
+    }
+
+    .LoginCard h1 {
+        font-size: 1.65rem;
+    }
+
+    .watchverse-logo {
+        font-size: 20px;
+        left: 18px;
+    }
+}

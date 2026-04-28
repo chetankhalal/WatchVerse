@@ -1,0 +1,676 @@
+:root {
+    --gradient-primary: linear-gradient(90deg, #7B2FF7, #C84CF0, #4FACFE);
+    --bg-main: #0f0f13;
+    --bg-sidebar: #141418;
+    --bg-card: #1a1a22;
+    --bg-input: #1e1e28;
+    --bg-hover: #22222e;
+    --text-primary: #f0f0f5;
+    --text-secondary: #8888aa;
+    --text-muted: #55556a;
+    --border: #2a2a3a;
+    --accent-purple: #7B2FF7;
+    --accent-pink: #C84CF0;
+    --accent-blue: #4FACFE;
+    --tag-scifi: #3a2060;
+    --tag-thriller: #2a1840;
+    --tag-horror: #3a1520;
+    --tag-completed: #1a3a20;
+    --tag-scifi-text: #a080ff;
+    --tag-thriller-text: #cc88ff;
+    --tag-horror-text: #ff6688;
+    --tag-completed-text: #44dd88;
+    --sidebar-width: 220px;
+    --radius: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg-main);
+    color: var(--text-primary);
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    flex-shrink: 0;
+}
+
+.logo {
+    padding: 0 20px 24px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-icon {
+    width: 30px;
+    height: 30px;
+    background: var(--gradient-primary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+}
+
+.logo span {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-section {
+    flex: 1;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 20px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+    text-decoration: none;
+}
+
+.nav-item:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+.nav-item.active {
+    background: linear-gradient(90deg, rgba(123, 47, 247, 0.18), transparent);
+    border-left: 3px solid #7B2FF7;
+    color: var(--text-primary);
+}
+
+.nav-item svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.nav-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 10px 20px;
+}
+
+.profile-nav {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid var(--border);
+    cursor: pointer;
+}
+
+.avatar-sm {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* MAIN */
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* TOPBAR */
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 28px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-main);
+    flex-shrink: 0;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 9px 18px;
+    width: 340px;
+}
+
+.search-bar input {
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--text-primary);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.88rem;
+    width: 100%;
+}
+
+.search-bar input::placeholder {
+    color: var(--text-muted);
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.icon-btn {
+    width: 36px;
+    height: 36px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+}
+
+.icon-btn:hover {
+    border-color: #7B2FF7;
+    color: var(--text-primary);
+}
+
+.user-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 5px 12px 5px 5px;
+    cursor: pointer;
+}
+
+.user-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.user-chip span {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* CONTENT */
+.content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 28px;
+    display: flex;
+    gap: 24px;
+}
+
+.content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.content::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+/* LEFT PANEL */
+.left-panel {
+    width: 240px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.poster-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    position: relative;
+}
+
+.poster-card img {
+    width: 100%;
+    display: block;
+}
+
+.season-select {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+}
+
+.season-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.select-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 12px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.episode-list-label {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+}
+
+.episode-list-label h4 {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* RIGHT PANEL */
+.right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* SHOW HEADER */
+.show-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.show-info {
+    flex: 1;
+}
+
+.show-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.show-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 14px;
+    max-width: 580px;
+}
+
+.tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 5px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.tag-scifi {
+    background: var(--tag-scifi);
+    color: var(--tag-scifi-text);
+}
+
+.tag-thriller {
+    background: var(--tag-thriller);
+    color: var(--tag-thriller-text);
+}
+
+.tag-horror {
+    background: var(--tag-horror);
+    color: var(--tag-horror-text);
+}
+
+.tag-completed {
+    background: var(--tag-completed);
+    color: var(--tag-completed-text);
+}
+
+/* RATING */
+.rating-block {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.stars {
+    display: flex;
+    gap: 4px;
+    justify-content: flex-end;
+    margin-bottom: 6px;
+}
+
+.star {
+    font-size: 1.5rem;
+}
+
+.star.filled {
+    color: transparent;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.star.half {
+    color: transparent;
+    background: linear-gradient(90deg, #7B2FF7 50%, #444 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.star.empty {
+    color: #333;
+}
+
+.rating-score {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.rating-score span {
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.rating-count {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+/* ACTION BUTTONS */
+.action-btns {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    flex: 1;
+    padding: 13px 16px;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-watchlist {
+    background: var(--gradient-primary);
+    color: white;
+}
+
+.btn-watching {
+    background: linear-gradient(90deg, #9B3FF7, #D05CF0);
+    color: white;
+}
+
+.btn-completed {
+    background: linear-gradient(90deg, #C84CF0, #6FACFE);
+    color: white;
+}
+
+/* EPISODE TRACKING */
+.tracking-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+}
+
+.tracking-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.tracking-title {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.season-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 14px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-primary);
+}
+
+.progress-bar {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 60%;
+    background: var(--gradient-primary);
+    border-radius: 3px;
+}
+
+/* EPISODES */
+.episodes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.episode-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 13px 16px;
+    transition: border-color 0.2s;
+}
+
+.episode-item:hover {
+    border-color: #7B2FF7;
+}
+
+.episode-name {
+    font-size: 0.87rem;
+    font-weight: 500;
+}
+
+.btn-watched {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 7px 16px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: opacity 0.2s;
+}
+
+.btn-watched:hover {
+    opacity: 0.85;
+}
+
+/* REVIEW */
+.review-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+}
+
+.review-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.review-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: start;
+}
+
+.review-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.review-input {
+    width: 100%;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+    color: var(--text-primary);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.87rem;
+    resize: none;
+    height: 90px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.review-input:focus {
+    border-color: #7B2FF7;
+}
+
+.review-input::placeholder {
+    color: var(--text-muted);
+}
+
+.review-rating {
+    text-align: right;
+}
+
+.review-stars {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+.review-star {
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: transform 0.15s;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.review-star:hover {
+    transform: scale(1.2);
+}
+
+.sparkle {
+    font-size: 1.4rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+
+.movies-row::-webkit-scrollbar{
+    display: none;
+}
+
