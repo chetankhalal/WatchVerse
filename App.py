@@ -81,24 +81,80 @@ def logout():
     session.pop('email',None)
     return redirect('/')
 
-@app.route('/dashboard')
+@app.route('/dashboard',methods=["GET", "POST"])
 def dash():
-    session.get('First_name')
-    return render_template("base.html")
+    name = session.get('First_name')
+    
+    return render_template("base.html",name=name)
 
 @app.route('/series')
 def series():
-    return render_template("series.html")
+    search = 'anime'
+    return render_template("series.html",search_bar_fun =search)
 
 @app.route('/movies')
 def movies():
-    rawData = requests.get('http://www.omdbapi.com/?i=tt3896198&apikey=8f4be22e&s=batman')
-    films = rawData.json()
-    return render_template("movies.html", films = films)
+    # url = "https://imdb-top-100-movies.p.rapidapi.com/"
 
-@app.route('/copy')
-def copy():
-    return render_template("copy.html")
+    # headers = {
+	# "x-rapidapi-key": "70e3d0a7d0msh11578a4d540f707p1236bdjsn60219387dcb7",
+	# "x-rapidapi-host": "imdb-top-100-movies.p.rapidapi.com",
+	# "Content-Type": "application/json"
+    # }
+    # response = requests.get(url, headers=headers)
+    # films = response
+    rawData = requests.get("http://www.omdbapi.com/?i=tt3896198&apikey=8f4be22e&s=ironman")
+    films = rawData.json()
+    text = 'Trending Movies'
+    placeholder = 'Movies'
+    search= "search_movies"
+    return render_template("movies.html", films = films,placeholder=placeholder ,text= text,search_bar_fun =search)
+
+@app.route('/anime',methods=["POST","GET"])
+def anime():
+    rawData = requests.get("https://api.jikan.moe/v4/top/anime?type=tv&limit=20")
+    anime_list = rawData.json()
+    text = 'New Animes '
+    search = 'search'
+    placeholder= 'Anime'
+    return render_template("anime.html",anime = anime_list, text =text, search_bar_fun =search,placeholder= placeholder)
+
+@app.route('/singleAnime')
+def anime_data():
+    return 'data not availbalbe'
+
+
+@app.route('/search/anime_search',methods=["POST","GET"])
+def search():
+    anime_list = None
+    if request.method == 'POST':
+        main_search_data = request.form.get("main_searchbar")
+    rawdData = requests.get("https://api.jikan.moe/v4/anime?q="+main_search_data)
+    placeholder ='Anime'
+    anime_list = rawdData.json()
+    text ='Search Results'
+    search = 'search'
+    return render_template("anime.html",anime =anime_list,text = text,placeholder= placeholder,search_bar_fun =search)
+
+@app.route('/single_movies/<Title>')
+def data_about_single(Title):
+    rawData = requests.get("http://www.omdbapi.com/?i=tt3896198&apikey=8f4be22e&t="+Title)
+    movies = rawData.json()
+    return render_template("singleMoviePage.html",movies =movies)
+
+
+@app.route('/search',methods=["GET", "POST"])
+def search_movies():
+    films = None
+    if request.method == "POST":
+        session['search_result'] = request.form.get("search_bar")
+        search_term = session.get('search_result')
+        rawData = requests.get('http://www.omdbapi.com/?i=tt3896198&apikey=8f4be22e&type=series&plot=full&s='+search_term)
+        films = rawData.json()
+    text = 'Available Movies'
+    search ="anime"
+    return render_template("movies_search.html",films = films, text =text,search_bar_fun =search)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

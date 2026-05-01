@@ -1,15 +1,16 @@
 {% extends 'template.html' %}
 {% block movies %}
-{% for movie in films.Search %}
+{% for movie in anime.data %}
 <div class="mega-card">
     <div class="card">
-        <div class="poster"> <img src="{{movie.Poster}}" class="card-img-top" alt="..."> </div>
-        <h3> {{movie.Title}} </h3>
-        <p>⭐ {{movie.Rating}} </p>
-        <!-- <span class="tag completed"> Rank :  {{movie.rank}} </span> -->
+        <div class="poster"> <img src="{{movie.images.jpg.image_url}}" class="card-img-top" alt="..."> </div>
+        <h3> {{movie.title_english}} </h3>
+        <h3> {{movie.year}} </h3>
+        <span class="tag completed">  {{movie.status}} </span>
     </div>
     <div class="hover-card">
-        <div class="poster"> <img src="{{movie.image}}" class="card-img-top" alt="..."> </div>
+        <div class="poster"> <img src="{{movie.images.jpg.image_url}}" class="card-img-top" alt="..."> </div>
+        <h3> {{movie.title_english}} </h3>
         <div class="buttons">
             <form action="" method="post">
                 <input type="hidden" name="Title" value="{{movie.Title}}">
@@ -17,7 +18,7 @@
                 <input type="hidden" name="Year" value="{{movie.Year}}">
                 <button class="watchlist" name="action" value="watchlist">+ Watchlist</button>
                 <a class="watchlist know-more-btn" name="action"
-                    href="{{url_for('data_about_single', Title = movie.Title)}}"> Know More </a>
+                    href="{{url_for('anime_data', Title = movie.mal_id)}}"> Know More </a>
                 <button class="complete" name="action" value="complete"> ✔ </button>
             </form>
         </div>

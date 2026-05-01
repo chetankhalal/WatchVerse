@@ -1,9 +1,70 @@
 {% extends 'base.html' %}
 {% block body %}
-<div class="container d-flex movies-row" style="overflow-x: scroll;">
-    
-      {% block movies %}
-        
-      {% endblock movies %}
+<div class="container">
+      <!-- Main -->
+      <main class="main">
+
+            <!-- Top Bar -->
+            <div class="Movies-searchbar ">
+                  <form action=" {{url_for(search_bar_fun)}}" method="post">
+                        <input type="text" placeholder="Search {{placeholder}} ..." name="main_searchbar" />
+                  </form>
+
+                  <div class="filters">
+                        <select>
+                              <option>Genre</option>
+                        </select>
+                        <select>
+                              <option>Status</option>
+                        </select>
+                        <select>
+                              <option>Type</option>
+                        </select>
+                  </div>
+            </div>
+
+            <div>
+                  <h3> {{text}} </h3>
+            </div>
+            <!-- Cards Grid -->
+            <div class="grid">
+
+                  <!-- Card -->
+                  {% block movies %}
+
+                  {% endblock movies %}
+
+
+                  <!-- Duplicate cards as needed -->
+
+            </div>
+
+      </main>
+
 </div>
+
+<script>
+      const cards = document.querySelectorAll('.mega-card');
+
+      cards.forEach(card => {
+            const target = card.querySelector('.hover-card');
+            const trigger = card.querySelector('.card')
+            // IMPORTANT: hover-card should be INSIDE each card
+
+            card.addEventListener('mouseenter', () => {
+                  target.style.display = 'block';
+                  trigger.style.display = 'none';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                  // small delay prevents flicker
+                  setTimeout(() => {
+                        if (!card.matches(':hover')) {
+                              target.style.display = 'none';
+                              trigger.style.display = 'block';
+                        }
+                  }, 50);
+            });
+      });
+</script>
 {% endblock body %}

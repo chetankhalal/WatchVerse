@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/singleMoviePage.css">
+</head>
+
+<body>
+    <div class="card">
+
+        <!-- HERO -->
+        <div class="hero">
+            <div class="poster">
+                <div class="poster-placeholder"> <img src="{{movies['Poster']}}" alt="{{movies['title']}}"> </div>
+            </div>
+
+            <div class="hero-info">
+                <div class="title-row">
+                    <h1 class="movie-title"> {{movies['Title']}} </h1>
+                    <div class="rating-block">
+                        <div class="stars">
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star half">★</span>
+                        </div>
+                        <div class="score"> {{movies.imdbRating}} <span>/10</span></div>
+                        <div class="votes"> {{movies['Rated']}} </div>
+                    </div>
+                </div>
+
+                <p class="tagline"> {{movies['Plot']}} </p>
+
+                <div class="meta-row">
+                    <div class="meta-item"><span class="meta-icon">🎬</span>{{movies.Year}} </div>
+                    <div class="dot"></div>
+                    <div class="meta-item"><span class="meta-icon">⏱</span> {{movies.Runtime}} </div>
+                    <div class="dot"></div>
+                    <div class="meta-item"><span class="meta-icon">🌍</span> {{movies.Language}} </div>
+                </div>
+
+                <div class="tags">
+                    {% set genre_list = movies['Genre'].split(',') %}
+                    {% for i in range(genre_list|length) %}
+                    <span class="tag sci-fi"> {{ genre_list[i].strip() }} </span>
+                    {% endfor %}
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-outline">
+                        <span class="btn-icon">🔖</span> Add to Watchlist
+                    </button>
+                    <button class="btn btn-primary">
+                        <span class="btn-icon">▷</span> Mark as Watching
+                    </button>
+                    <button class="btn btn-ghost">
+                        <span class="btn-icon">✓</span> Mark as Watched
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- DETAILS -->
+        <div class="details-section">
+            <div class="detail-group">
+                <div class="detail-item">
+                    <span class="detail-label">Director</span>
+                    <span class="detail-value"> {{movies['Director']}} </span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Writers</span>
+                    <span class="detail-value"> {{movies['Writer']}} </span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Studio</span>
+                    <span class="detail-value"> {{movies.Production}} </span>
+                </div>
+            </div>
+            <div class="detail-group">
+                <div class="detail-item">
+                    <span class="detail-label">Cast</span>
+                    <div class="cast-chips">
+                        <span class="chip">Matthew McConaughey</span>
+                        <span class="chip">Anne Hathaway</span>
+                        <span class="chip">Jessica Chastain</span>
+                        <span class="chip">Michael Caine</span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Release Date</span>
+                    <span class="detail-value"> {{movies.Released}} </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- WATCH PROGRESS -->
+        <div class="watch-status">
+            <div class="watch-status-header">
+                <span class="section-title">Watch Progress</span>
+                <span class="status-badge">✓ Completed</span>
+            </div>
+            <div class="progress-bar-wrap">
+                <div class="progress-bar-fill" style="width:100%"></div>
+            </div>
+            <div class="progress-label">Watched · 2h 49m</div>
+            <div class="watch-actions">
+                <button class="btn btn-outline" style="font-size:12px;padding:8px 14px;">
+                    <span>🔁</span> Rewatch
+                </button>
+                <button class="btn btn-ghost" style="font-size:12px;padding:8px 14px;">
+                    <span>📋</span> Add to List
+                </button>
+                <button class="btn btn-ghost" style="font-size:12px;padding:8px 14px;">
+                    <span>🔗</span> Share
+                </button>
+            </div>
+        </div>
+
+        <!-- REVIEW -->
+        <div class="review-section">
+            <div class="section-title">Write a Review</div>
+            <div class="review-form">
+                <textarea class="review-textarea" placeholder="Share your thoughts about this movie..."></textarea>
+                <div class="review-bottom">
+                    <div class="review-rating">
+                        <span class="review-rating-label">Rating</span>
+                        <div class="star-input">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star empty-i">★</span>
+                            <span class="sparkle">✦</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" style="padding:10px 24px;">
+                        Submit Review
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Interactive star rating
+        const stars = document.querySelectorAll('.star-input .star');
+        stars.forEach((s, i) => {
+            s.addEventListener('mouseenter', () => {
+                stars.forEach((x, j) => {
+                    x.style.color = j <= i ? 'var(--star)' : 'rgba(255,255,255,0.15)';
+                });
+            });
+            s.addEventListener('mouseleave', () => {
+                stars.forEach(x => x.style.color = '');
+            });
+            s.addEventListener('click', () => {
+                stars.forEach((x, j) => {
+                    x.classList.toggle('empty-i', j > i);
+                    x.style.color = j <= i ? 'var(--star)' : '';
+                });
+            });
+        });
+
+        // Animate progress bar on load
+        setTimeout(() => {
+            document.querySelector('.progress-bar-fill').style.width = '100%';
+        }, 300);
+    </script>
+</body>
+
+</html>

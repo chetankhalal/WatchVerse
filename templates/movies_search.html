@@ -5,11 +5,12 @@
     <div class="card">
         <div class="poster"> <img src="{{movie.Poster}}" class="card-img-top" alt="..."> </div>
         <h3> {{movie.Title}} </h3>
-        <p>⭐ {{movie.Rating}} </p>
-        <!-- <span class="tag completed"> Rank :  {{movie.rank}} </span> -->
+        <p>⭐ 4.5/5</p>
+        <span class="tag completed">Completed</span>
     </div>
     <div class="hover-card">
-        <div class="poster"> <img src="{{movie.image}}" class="card-img-top" alt="..."> </div>
+        <div class="poster"> <img src="{{movie.Poster}}" class="card-img-top" alt="..."> </div>
+        <h3> {{movie.Title}} </h3>
         <div class="buttons">
             <form action="" method="post">
                 <input type="hidden" name="Title" value="{{movie.Title}}">
