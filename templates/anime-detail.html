@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jujutsu Kaisen – AniTrack</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/anime_detail.css" />
+</head>
+
+<body>
+
+  <!-- HERO BANNER -->
+  <div class="hero">
+    <img class="hero-bg" src="{{ani.data.images.jpg.large_image_url}}"
+      onerror="this.style.background='linear-gradient(135deg,#1a0a2e,#0d0d12)';this.removeAttribute('src')"
+      alt="JJK Banner" />
+    <div class="hero-gradient"></div>
+  </div>
+
+  <!-- MAIN PAGE -->
+  <main class="page">
+    <div class="top-row">
+
+      <!-- POSTER + ACTIONS -->
+      <div class="poster-col">
+        <div class="poster-wrap">
+          <img src="{{ani.data.images.jpg.image_url}}" onerror="this.style.background='#1a1a27';this.alt='Poster'"
+            alt="JJK Poster" />
+          <span class="poster-badge">★ TOP RATED</span>
+        </div>
+        <button class="btn btn-watchlist">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+          </svg>
+          Add to Watchlist
+        </button>
+        <button class="btn btn-watching" onclick="toggleWatching(this)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <polygon points="5 3 19 12 5 21 5 3" />
+          </svg>
+          Mark as Watching
+        </button>
+        <button class="btn btn-review">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+          </svg>
+          Review
+        </button>
+      </div>
+
+      <!-- ANIME INFO -->
+      <div class="info-col">
+        <h1 class="anime-title">{{ani.data.title_english}}</h1>
+
+        <div class="rating-row">
+          <span class="stars">★★★★½</span>
+          <span class="rating-value"> {{ani.data.score}} <span
+              style="font-size:14px;color:var(--muted)">/10</span></span>
+          <span class="rating-votes">( {{ani.data.scored_by}} votes)</span>
+        </div>
+
+        <div class="meta-pills">
+          <span class="pill pill-label">Status:</span>
+          <span class="pill pill-status">● {{ani.data.status}} </span>
+          <span class="pill pill-label">Type:</span>
+          <span class="pill pill-type">{{ani.data.type}}</span>
+          <span class="pill pill-label">Episodes:</span>
+          <span class="pill pill-ep"> {{ani.data.episodes}} </span>
+          <span class="pill pill-label">Genre:</span>
+          {% for i in ani.data.genres %}
+          <span class="pill pill-genre"> {{i.name}} </span>
+          {% endfor %}
+        </div>
+
+        <p class="section-label">Synopsis</p>
+        <p class="synopsis">
+          {{ani.data.synopsis}}
+        </p>
+
+        <!-- CAST + STREAMING -->
+        <div class="cards-row">
+          <div class="info-card">
+            <p class="info-card-title">Main Cast &amp; Voice Actors</p>
+            <div class="cast-list">
+              <div class="cast-item">
+                <div class="cast-avatar">
+                  <img src="https://cdn.myanimelist.net/images/characters/9/436229.jpg" alt="Yuji"
+                    onerror="this.parentElement.textContent='YI'" />
+                </div>
+                <span class="cast-name">Yuji</span>
+              </div>
+              <div class="cast-item">
+                <div class="cast-avatar">VA</div>
+                <span class="cast-name">J. Kimura</span>
+              </div>
+              <div class="cast-divider"></div>
+              <div class="cast-item">
+                <div class="cast-avatar">
+                  <img src="https://cdn.myanimelist.net/images/characters/3/436228.jpg" alt="Megumi"
+                    onerror="this.parentElement.textContent='MF'" />
+                </div>
+                <span class="cast-name">Megumi</span>
+              </div>
+              <div class="cast-item">
+                <div class="cast-avatar">VA</div>
+                <span class="cast-name">Y. Uchida</span>
+              </div>
+              <div class="cast-divider"></div>
+              <div class="cast-item">
+                <div class="cast-avatar">
+                  <img src="https://cdn.myanimelist.net/images/characters/2/436230.jpg" alt="Nobara"
+                    onerror="this.parentElement.textContent='NK'" />
+                </div>
+                <span class="cast-name">Nobara</span>
+              </div>
+              <div class="cast-item">
+                <div class="cast-avatar">VA</div>
+                <span class="cast-name">A. Enoki</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <p class="info-card-title">Where to Watch</p>
+            <div class="streaming-list">
+              <div class="stream-icon" title="Netflix">🅽</div>
+              <div class="stream-icon" title="Crunchyroll">🟠</div>
+              <div class="stream-icon" title="Apple TV">🍎</div>
+              <div class="stream-icon" title="Funimation">🔵</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── EPISODES ── -->
+    <div class="episodes-section">
+      <div class="ep-header">
+        <h2 class="ep-title">Episodes</h2>
+        <div class="season-select-wrap">
+          <select class="season-select" id="seasonSelect" onchange="loadSeason(this.value)">
+            <option value="1">Season 1 — Cursed Child Arc (2020)</option>
+            <option value="2">Season 2 — Hidden Inventory Arc (2023)</option>
+            <option value="3">Season 3 — Culling Game Arc (2024)</option>
+          </select>
+          <span class="select-arrow">▼</span>
+        </div>
+      </div>
+
+      <div class="ep-list" id="epList"></div>
+    </div>
+  </main>
+
+  <script>
+    const seasons = {
+      1: [
+        { n: 1, name: "Ryomen Sukuna", dur: "24m", rating: 4.6, watched: true },
+        { n: 2, name: "For Myself", dur: "24m", rating: 4.5, watched: true },
+        { n: 3, name: "Girl of Steel", dur: "24m", rating: 4.7, watched: true },
+        { n: 4, name: "Curse Womb Must Die", dur: "24m", rating: 4.8, watched: true },
+        { n: 5, name: "Curse Womb Must Die II", dur: "24m", rating: 4.7, watched: true },
+        { n: 6, name: "After Rain", dur: "24m", rating: 4.5, watched: true },
+        { n: 7, name: "The Small Jar", dur: "24m", rating: 4.6, watched: false },
+        { n: 8, name: "Batto Sword Drawing", dur: "24m", rating: 4.4, watched: false },
+        { n: 9, name: "Small Fry and Reverse Punches", dur: "24m", rating: 4.5, watched: false },
+        { n: 10, name: "Idle Transfiguration", dur: "24m", rating: 4.9, watched: false },
+        { n: 11, name: "Narrow-Minded", dur: "24m", rating: 4.6, watched: false },
+        { n: 12, name: "To You, Someday", dur: "24m", rating: 4.8, watched: false },
+        { n: 13, name: "Tomorrow", dur: "24m", rating: 4.7, watched: false },
+      ],
+      2: [
+        { n: 1, name: "The Hidden Inventory", dur: "24m", rating: 4.8, watched: false },
+        { n: 2, name: "Premature Death", dur: "24m", rating: 4.9, watched: false },
+        { n: 3, name: "Hidden Inventory 3", dur: "24m", rating: 4.7, watched: false },
+        { n: 4, name: "Hidden Inventory 4", dur: "24m", rating: 4.8, watched: false },
+        { n: 5, name: "Shinjuku Showdown", dur: "24m", rating: 4.9, watched: false },
+        { n: 6, name: "Red Scale", dur: "24m", rating: 5.0, watched: false },
+        { n: 7, name: "Evening Festival", dur: "24m", rating: 4.8, watched: false },
+        { n: 8, name: "Thunderclap", dur: "24m", rating: 5.0, watched: false },
+        { n: 9, name: "Thunderclap Part 2", dur: "24m", rating: 4.9, watched: false },
+      ],
+      3: [
+        { n: 1, name: "The Culling Game Begins", dur: "24m", rating: 4.7, watched: false },
+        { n: 2, name: "Sendai Colony", dur: "24m", rating: 4.6, watched: false },
+        { n: 3, name: "Merger", dur: "24m", rating: 4.8, watched: false },
+        { n: 4, name: "Colony Rules", dur: "24m", rating: 4.7, watched: false },
+      ],
+    };
+
+    function renderEpisodes(seasonId) {
+      const list = document.getElementById('epList');
+      const eps = seasons[seasonId] || [];
+      list.innerHTML = eps.map(ep => {
+        const fillPct = Math.round(((ep.rating - 4) / 1.2) * 100);
+        return `
+        <div class="ep-item ${ep.watched ? 'watched' : ''}" id="ep-${ep.n}">
+          <span class="ep-num">${String(ep.n).padStart(2, '0')}</span>
+          <div class="ep-info">
+            <div class="ep-name">${ep.name}</div>
+            <div class="ep-meta">Episode ${ep.n} · ${ep.dur}</div>
+          </div>
+          <div class="ep-bar-wrap">
+            <div class="ep-bar-bg">
+              <div class="ep-bar-fill" style="width:${fillPct}%"></div>
+            </div>
+          </div>
+          <div class="ep-rating">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--star)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            ${ep.rating.toFixed(1)}
+          </div>
+          <div class="ep-tick ${ep.watched ? 'done' : ''}" onclick="toggleWatched(${ep.n})">✓</div>
+        </div>`;
+      }).join('');
+    }
+
+    function loadSeason(val) { renderEpisodes(parseInt(val)); }
+
+    function toggleWatched(n) {
+      const el = document.getElementById('ep-' + n);
+      el.classList.toggle('watched');
+      const tick = el.querySelector('.ep-tick');
+      tick.classList.toggle('done');
+    }
+
+    function toggleWatching(btn) {
+      const active = btn.dataset.active === '1';
+      if (active) {
+        btn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="5 3 19 12 5 21 5 3"/></svg> Mark as Watching`;
+        btn.dataset.active = '0';
+      } else {
+        btn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg> Currently Watching`;
+        btn.dataset.active = '1';
+      }
+    }
+
+    renderEpisodes(1);
+  </script>
+</body>
+
+</html>

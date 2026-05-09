@@ -14,12 +14,12 @@
         <!-- HERO -->
         <div class="hero">
             <div class="poster">
-                <div class="poster-placeholder"> <img src="{{movies['Poster']}}" alt="{{movies['title']}}"> </div>
+                <div class="poster-placeholder"> <img src="https://image.tmdb.org/t/p/original{{movies.poster_path}}" alt="{{movies['title']}}"> </div>
             </div>
 
             <div class="hero-info">
                 <div class="title-row">
-                    <h1 class="movie-title"> {{movies['Title']}} </h1>
+                    <h1 class="movie-title"> {{movies.title}} </h1>
                     <div class="rating-block">
                         <div class="stars">
                             <span class="star filled">★</span>
@@ -28,25 +28,24 @@
                             <span class="star filled">★</span>
                             <span class="star half">★</span>
                         </div>
-                        <div class="score"> {{movies.imdbRating}} <span>/10</span></div>
-                        <div class="votes"> {{movies['Rated']}} </div>
+                        <div class="score"> {{movies.vote_average}} <span>/10</span></div>
+                        <div class="votes"> {{movies.vote_count}} Votes </div>
                     </div>
                 </div>
 
-                <p class="tagline"> {{movies['Plot']}} </p>
+                <p class="tagline"> {{movies.overview}} </p>
 
                 <div class="meta-row">
-                    <div class="meta-item"><span class="meta-icon">🎬</span>{{movies.Year}} </div>
+                    <div class="meta-item"><span class="meta-icon">🎬</span>{{movies.release_date}} </div>
                     <div class="dot"></div>
-                    <div class="meta-item"><span class="meta-icon">⏱</span> {{movies.Runtime}} </div>
+                    <div class="meta-item"><span class="meta-icon">⏱</span> {{movies.runtime}} minutes </div>
                     <div class="dot"></div>
-                    <div class="meta-item"><span class="meta-icon">🌍</span> {{movies.Language}} </div>
+                    <div class="meta-item"><span class="meta-icon">🌍</span> {{movies.original_language}} </div>
                 </div>
 
                 <div class="tags">
-                    {% set genre_list = movies['Genre'].split(',') %}
-                    {% for i in range(genre_list|length) %}
-                    <span class="tag sci-fi"> {{ genre_list[i].strip() }} </span>
+                    {% for i in movies.genres %}
+                    <span class="tag sci-fi"> {{i.name}} </span>
                     {% endfor %}
                 </div>
 
@@ -77,7 +76,10 @@
                 </div>
                 <div class="detail-item">
                     <span class="detail-label">Studio</span>
-                    <span class="detail-value"> {{movies.Production}} </span>
+                    {% for i in movies.production_companies %}
+                        <span class="detail-value"> {{i.name}} </span>
+                    {% endfor %}
+                    
                 </div>
             </div>
             <div class="detail-group">
@@ -92,7 +94,7 @@
                 </div>
                 <div class="detail-item">
                     <span class="detail-label">Release Date</span>
-                    <span class="detail-value"> {{movies.Released}} </span>
+                    <span class="detail-value"> {{movies.release_date}} </span>
                 </div>
             </div>
         </div>

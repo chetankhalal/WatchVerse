@@ -1,0 +1,61 @@
+{% extends 'template.html' %}
+{% block movies %}
+<div>
+    <h3> Movies  </h3>
+</div>
+<div class="grid">
+{% for movie in data %}
+
+<div class="mega-card">
+    <div class="card">
+        <div class="poster"> <img src="https://image.tmdb.org/t/p/original{{movie[3]}}" class="card-img-top" alt="...">
+        </div>
+        <h3> {{movie[1]}} </h3>
+        <p>⭐ {{movie[4]}} </p>
+        <span class="tag completed">Completed</span>
+    </div>
+    <div class="hover-card">
+        <div class="poster"> <img src="https://image.tmdb.org/t/p/original{{movie[3]}}" class="card-img-top" alt="...">
+        </div>
+        <div class="buttons">
+            <form action="" method="POST">
+                <input type="hidden" name="Id" value="{{movie[0]}}">
+                <button class="danger" name="action" value="watchlist"> Delete </button>
+                <button class="complete" name="action" value="complete">✔ Completed</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endfor %}
+</div>
+<div>
+    <h3> series  </h3>
+</div>
+<div class="grid">
+{% for movie in data %}
+
+<div class="mega-card">
+    <div class="card">
+        <div class="poster"> <img src="https://image.tmdb.org/t/p/original{{movie[3]}}" class="card-img-top" alt="...">
+        </div>
+        <h3> {{movie[1]}} </h3>
+        <p>⭐ {{movie[4]}} </p>
+        <span class="tag completed">Completed</span>
+    </div>
+    <div class="hover-card">
+        <div class="poster"> <img src="https://image.tmdb.org/t/p/original{{movie[3]}}" class="card-img-top" alt="...">
+        </div>
+        <div class="buttons">
+            <form action="" method="POST">
+                <input type="hidden" name="Id" value="{{movie[0]}}">
+                <button class="danger" name="action" value="watchlist"> Delete </button>
+                <button class="complete" name="action" value="complete">✔ Completed</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endfor %}
+</div>
+{% endblock%}

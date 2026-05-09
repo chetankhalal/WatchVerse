@@ -1,16 +1,13 @@
 {% extends 'template.html' %}
 {% block movies %}
-<div>
-    <h3> {{text}} </h3>
-</div>
 <div class="grid">
-{% for movie in films.results %}
+    {% for movie in films.results %}
     <div class="mega-card">
         <div class="card">
             <div class="poster"> <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}"
                     class="card-img-top" alt="..."> </div>
             <h3> {{movie.title}} </h3>
-            <p>⭐ {{movie.vote_average}} </p>
+            <p>⭐ {{movie.Rating}} </p>
             <!-- <span class="tag completed"> Rank :  {{movie.rank}} </span> -->
         </div>
         <div class="hover-card">
@@ -19,20 +16,18 @@
             <h3> {{movie.title}} </h3>
             <div class="buttons">
                 <form action="" method="post">
-                    <input type="hidden" name="movie_id" value="{{movie.id}}">
                     <input type="hidden" name="Title" value="{{movie.title}}">
-                    <input type="hidden" name="Poster" value="{{movie.poster_path}}">
-                    <input type="hidden" name="Rating" value="{{movie.vote_average}}">
+                    <input type="hidden" name="Poster" value="{{movie.Poster}}">
+                    <input type="hidden" name="Year" value="{{movie.Year}}">
                     <button class="watchlist" name="action" value="watchlist">+ Watchlist</button>
                     <a class="watchlist know-more-btn" name="action"
-                        href="{{url_for('data_about_single', movie_id = movie.id)}}"> Know More </a>
+                        href="{{url_for('data_about_single', Title = movie.title)}}"> Know More </a>
                     <button class="complete" name="action" value="complete"> ✔ </button>
                 </form>
             </div>
         </div>
 
     </div>
-
-{% endfor %}
+    {% endfor %}
 </div>
 {% endblock movies %}

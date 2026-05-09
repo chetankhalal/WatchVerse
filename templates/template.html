@@ -23,21 +23,10 @@
                   </div>
             </div>
 
-            <div>
-                  <h3> {{text}} </h3>
-            </div>
-            <!-- Cards Grid -->
-            <div class="grid">
+            {% block movies %}
 
-                  <!-- Card -->
-                  {% block movies %}
+            {% endblock movies %}
 
-                  {% endblock movies %}
-
-
-                  <!-- Duplicate cards as needed -->
-
-            </div>
 
       </main>
 

@@ -1,0 +1,330 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+  <!-- ── MAIN ── -->
+  <div class="container">
+
+    <!-- TOP BAR -->
+   
+
+    <!-- CONTENT -->
+    <div class="dashboard-content">
+
+      <!-- Breadcrumb -->
+      
+
+      <!-- Profile Hero -->
+      <div class="profile-hero">
+        <div class="profile-avatar">
+          <img src="https://i.pravatar.cc/200?img=11" alt="Alex" onerror="this.style.display='none'" />
+        </div>
+        <div>
+          <div class="profile-name-row">
+            <span class="profile-name">Alex J.</span>
+            <span class="verified">✓</span>
+          </div>
+          <div class="profile-sub">Member since Jan 2022 · Premium Plan · @alexj</div>
+        </div>
+      </div>
+
+      <!-- Stat Cards -->
+      <div class="dashboard-stat-grid">
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-label">Total Watched</div>
+          <div class="dashboard-stat-value">1,248</div>
+          <div class="dashboard-stat-breakdown">
+            <div class="dashboard-stat-type"><span class="dashboard-stat-type-icon">🎬</span> Movie <span class="dashboard-stat-type-count"
+                style="margin-left:4px">1,248</span></div>
+            <div class="dashboard-stat-type"><span class="dashboard-stat-type-icon">📺</span> Series <span class="dashboard-stat-type-count"
+                style="margin-left:4px">338</span></div>
+            <div class="dashboard-stat-type"><span class="dashboard-stat-type-icon">⛩</span> Anime <span class="dashboard-stat-type-count"
+                style="margin-left:4px">533</span></div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-label">Hours Spent</div>
+          <div class="dashboard-stat-value">2,189 <small>hrs</small></div>
+          <div class="dashboard-stat-breakdown">
+            <div class="dashboard-stat-type" style="color:var(--muted)">Monthly avg. <span class="dashboard-stat-type-count"
+                style="margin-left:4px">182 hrs</span></div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-label">Favorite Genre</div>
+          <div class="dashboard-stat-value" style="font-size:32px">Sci-Fi/<br>Fantasy</div>
+          <div class="dashboard-genre-tags">
+            <span class="dashboard-genre-tag">Sci-Fi/Fantasy</span>
+            <span class="dashboard-genre-tag">Oshinoted</span>
+            <span class="dashboard-genre-tag">Anime</span>
+            <span class="dashboard-genre-tag">Entenized</span>
+            <span class="dashboard-genre-tag">Arcanics</span>
+            <span class="dashboard-genre-tag">Fantasy</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analytics + Recently Watched -->
+      <div class="analytics-row">
+
+        <!-- Line Chart -->
+        <div class="ana-card">
+          <div class="ana-card-header">
+            <span class="ana-title">Watching Activity</span>
+            <span class="ana-badge">last 12 months</span>
+          </div>
+          <div class="chart-area">
+            <canvas id="lineChart" width="340" height="150"></canvas>
+            <div class="chart-tooltip" id="lineTooltip">
+              <div class="chart-tooltip-label">Hours</div>
+              <div class="chart-tooltip-val" id="tooltipVal">—</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Donut Chart -->
+        <div class="ana-card">
+          <div class="ana-card-header">
+            <span class="ana-title">Genre Distribution</span>
+          </div>
+          <div class="donut-wrap">
+            <canvas class="donut-canvas" id="donutChart" width="150" height="150"></canvas>
+            <div class="donut-legend" id="donutLegend"></div>
+          </div>
+        </div>
+
+        <!-- Recently Watched -->
+        <div class="recent-card">
+          <div class="recent-header">
+            <span class="recent-title">Recently Watched List</span>
+            <a class="recent-see" href="#">See all →</a>
+          </div>
+          <div class="recent-list">
+            <div class="recent-item">
+              <div class="recent-thumb">🌌</div>
+              <div>
+                <div class="recent-name">Dune</div>
+                <div class="recent-time">2 hours ago</div>
+              </div>
+              <div class="recent-type movie">Movie</div>
+              <div class="recent-stars">★★★★★</div>
+              <div class="recent-ago">2 hrs ago</div>
+            </div>
+            <div class="recent-item">
+              <div class="recent-thumb">💣</div>
+              <div>
+                <div class="recent-name">Oppenheimer</div>
+                <div class="recent-time">Yesterday</div>
+              </div>
+              <div class="recent-type movie">Movie</div>
+              <div class="recent-stars">★★★★★</div>
+              <div class="recent-ago">1 day ago</div>
+            </div>
+            <div class="recent-item">
+              <div class="recent-thumb">🎮</div>
+              <div>
+                <div class="recent-name">Arcane</div>
+                <div class="recent-time">2 days ago</div>
+              </div>
+              <div class="recent-type series">Series</div>
+              <div class="recent-stars">★★★★★</div>
+              <div class="recent-ago">2 days ago</div>
+            </div>
+            <div class="recent-item">
+              <div class="recent-thumb">🔴</div>
+              <div>
+                <div class="recent-name">Stranger Things</div>
+                <div class="recent-time">3 days ago</div>
+              </div>
+              <div class="recent-type series">Series</div>
+              <div class="recent-stars">★★★★☆</div>
+              <div class="recent-ago">3 days ago</div>
+            </div>
+            <div class="recent-item">
+              <div class="recent-thumb">⚔️</div>
+              <div>
+                <div class="recent-name">Jujutsu Kaisen</div>
+                <div class="recent-time">4 days ago</div>
+              </div>
+              <div class="recent-type anime">Anime</div>
+              <div class="recent-stars">★★★★★</div>
+              <div class="recent-ago">4 days ago</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ── LINE CHART ── */
+    (function () {
+      const canvas = document.getElementById('lineChart');
+      const ctx = canvas.getContext('2d');
+      const tooltip = document.getElementById('lineTooltip');
+      const tVal = document.getElementById('tooltipVal');
+
+      const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const data = [8, 14, 18, 12, 28, 35, 22, 30, 25, 38, 20, 32];
+
+      const W = canvas.width, H = canvas.height;
+      const padL = 28, padR = 12, padT = 12, padB = 28;
+      const gW = W - padL - padR, gH = H - padT - padB;
+
+      const maxV = Math.max(...data);
+      const xStep = gW / (data.length - 1);
+      const pts = data.map((v, i) => ({
+        x: padL + i * xStep,
+        y: padT + gH - (v / maxV) * gH
+      }));
+
+      function draw(hovIdx) {
+        ctx.clearRect(0, 0, W, H);
+
+        // grid lines
+        ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+        ctx.lineWidth = 1;
+        [0, 10, 20, 30, 40].forEach(v => {
+          const y = padT + gH - (v / maxV) * gH;
+          ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(W - padR, y); ctx.stroke();
+          ctx.fillStyle = '#6a6a90';
+          ctx.font = '9px Outfit';
+          ctx.textAlign = 'right';
+          ctx.fillText(v, padL - 4, y + 3);
+        });
+
+        // labels
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#6a6a90';
+        ctx.font = '9px Outfit';
+        labels.forEach((l, i) => ctx.fillText(l, padL + i * xStep, H - 4));
+
+        // gradient fill
+        const grad = ctx.createLinearGradient(0, padT, 0, H - padB);
+        grad.addColorStop(0, 'rgba(124,92,191,0.45)');
+        grad.addColorStop(1, 'rgba(124,92,191,0.0)');
+        ctx.beginPath();
+        ctx.moveTo(pts[0].x, padT + gH);
+        pts.forEach(p => ctx.lineTo(p.x, p.y));
+        ctx.lineTo(pts[pts.length - 1].x, padT + gH);
+        ctx.closePath();
+        ctx.fillStyle = grad;
+        ctx.fill();
+
+        // line
+        ctx.beginPath();
+        ctx.moveTo(pts[0].x, pts[0].y);
+        pts.forEach(p => ctx.lineTo(p.x, p.y));
+        ctx.strokeStyle = '#7c5cbf';
+        ctx.lineWidth = 2.2;
+        ctx.lineJoin = 'round';
+        ctx.stroke();
+
+        // dots
+        pts.forEach((p, i) => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, hovIdx === i ? 5 : 3, 0, Math.PI * 2);
+          ctx.fillStyle = hovIdx === i ? '#3de68e' : '#7c5cbf';
+          ctx.fill();
+          ctx.strokeStyle = '#0c0c14';
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        });
+      }
+
+      canvas.addEventListener('mousemove', e => {
+        const rect = canvas.getBoundingClientRect();
+        const mx = e.clientX - rect.left;
+        let closest = -1, minD = 999;
+        pts.forEach((p, i) => {
+          const d = Math.abs(mx - p.x);
+          if (d < minD) { minD = d; closest = i; }
+        });
+        if (minD < 24) {
+          draw(closest);
+          tVal.textContent = data[closest] + ' hrs';
+          tooltip.style.left = (pts[closest].x + 8) + 'px';
+          tooltip.style.top = (pts[closest].y - 32) + 'px';
+          tooltip.classList.add('visible');
+        } else {
+          draw(-1);
+          tooltip.classList.remove('visible');
+        }
+      });
+      canvas.addEventListener('mouseleave', () => { draw(-1); tooltip.classList.remove('visible'); });
+
+      draw(-1);
+    })();
+
+    /* ── DONUT CHART ── */
+    (function () {
+      const canvas = document.getElementById('donutChart');
+      const ctx = canvas.getContext('2d');
+      const legend = document.getElementById('donutLegend');
+
+      const slices = [
+        { label: 'Sci-Fi/Fan.', pct: 32, color: '#7c5cbf' },
+        { label: 'Fantasy', pct: 22, color: '#3de68e' },
+        { label: 'Anime', pct: 20, color: '#e05c8a' },
+        { label: 'Series', pct: 16, color: '#f5c842' },
+        { label: 'Other', pct: 10, color: '#4fc3f7' },
+      ];
+
+      const W = 150, H = 150, cx = 75, cy = 75, outerR = 62, innerR = 38;
+      let hov = -1;
+
+      function drawDonut(hovIdx) {
+        ctx.clearRect(0, 0, W, H);
+        let start = -Math.PI / 2;
+        slices.forEach((s, i) => {
+          const angle = (s.pct / 100) * Math.PI * 2;
+          const expand = hovIdx === i ? 4 : 0;
+          const midA = start + angle / 2;
+          ctx.beginPath();
+          ctx.moveTo(cx + Math.cos(midA) * expand, cy + Math.sin(midA) * expand);
+          ctx.arc(cx + Math.cos(midA) * expand, cy + Math.sin(midA) * expand, outerR, start, start + angle);
+          ctx.arc(cx + Math.cos(midA) * expand, cy + Math.sin(midA) * expand, innerR, start + angle, start, true);
+          ctx.closePath();
+          ctx.fillStyle = s.color;
+          ctx.globalAlpha = hovIdx === i ? 1 : (hovIdx === -1 ? 0.85 : 0.55);
+          ctx.fill();
+          ctx.globalAlpha = 1;
+          start += angle;
+        });
+      }
+
+      canvas.addEventListener('mousemove', e => {
+        const rect = canvas.getBoundingClientRect();
+        const mx = e.clientX - rect.left - cx;
+        const my = e.clientY - rect.top - cy;
+        const dist = Math.sqrt(mx * mx + my * my);
+        if (dist < innerR || dist > outerR + 6) { hov = -1; drawDonut(-1); return; }
+        let angle = Math.atan2(my, mx) + Math.PI / 2;
+        if (angle < 0) angle += Math.PI * 2;
+        let start = 0, found = -1;
+        slices.forEach((s, i) => {
+          const a = (s.pct / 100) * Math.PI * 2;
+          if (angle >= start && angle < start + a) found = i;
+          start += a;
+        });
+        hov = found; drawDonut(found);
+      });
+      canvas.addEventListener('mouseleave', () => { hov = -1; drawDonut(-1); });
+
+      // legend
+      slices.forEach(s => {
+        legend.innerHTML += `
+      <div class="legend-item">
+        <span class="legend-dot" style="background:${s.color}"></span>
+        <span>${s.label}</span>
+        <span class="legend-pct">${s.pct}%</span>
+      </div>`;
+      });
+
+      drawDonut(-1);
+    })();
+  </script>
+{% endblock body %}

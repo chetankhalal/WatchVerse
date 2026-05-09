@@ -1,0 +1,576 @@
+:root {
+    --bg: #0d0d12;
+    --surface: #13131c;
+    --card: #1a1a27;
+    --border: #2a2a3d;
+    --accent: #7c5cbf;
+    --accent2: #3de68e;
+    --accent3: #e05c8a;
+    --text: #e8e8f0;
+    --muted: #7878a0;
+    --star: #f5c842;
+    --pill-bg: #252535;
+    --radius: 12px;
+    --radius-sm: 7px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ── HERO BANNER ── */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+}
+
+.hero-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.35) saturate(1.4);
+}
+
+.hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 20%, var(--bg) 100%),
+        linear-gradient(to right, var(--bg) 0%, transparent 40%);
+}
+
+.hero-logo {
+    position: absolute;
+    top: 24px;
+    left: 32px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, #fff 30%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+    filter: drop-shadow(0 2px 12px rgba(124, 92, 191, .6));
+}
+
+.site-nav {
+    position: absolute;
+    top: 28px;
+    right: 32px;
+    display: flex;
+    gap: 24px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+.site-nav a {
+    color: inherit;
+    text-decoration: none;
+    transition: color .2s;
+}
+
+.site-nav a:hover {
+    color: var(--text);
+}
+
+/* ── MAIN LAYOUT ── */
+.page {
+    max-width: 1160px;
+    margin: -60px auto 0;
+    padding: 0 24px 60px;
+    position: relative;
+    z-index: 2;
+}
+
+.top-row {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    gap: 28px;
+    align-items: start;
+}
+
+/* ── POSTER COLUMN ── */
+.poster-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.poster-wrap {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, .7), 0 0 0 1px var(--border);
+}
+
+.poster-wrap img {
+    width: 100%;
+    display: block;
+    transition: transform .4s ease;
+}
+
+.poster-wrap:hover img {
+    transform: scale(1.03);
+}
+
+.poster-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--accent2);
+    color: #000;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 20px;
+    letter-spacing: .5px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s;
+    letter-spacing: .3px;
+}
+
+.btn-watchlist {
+    background: linear-gradient(135deg, #5b3fa8, #7c5cbf);
+    color: #fff;
+}
+
+.btn-watchlist:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(124, 92, 191, .45);
+}
+
+.btn-watching {
+    background: linear-gradient(135deg, #2ecc71, #3de68e);
+    color: #000;
+}
+
+.btn-watching:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(61, 230, 142, .35);
+}
+
+.btn-review {
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.btn-review:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* ── INFO COLUMN ── */
+.info-col {
+    padding-top: 12px;
+}
+
+.anime-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 2px;
+    line-height: 1;
+    background: linear-gradient(135deg, #fff 50%, var(--accent) 120%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+.rating-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.stars {
+    color: var(--star);
+    font-size: 18px;
+}
+
+.rating-value {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.rating-votes {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.meta-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .3px;
+}
+
+.pill-label {
+    color: var(--muted);
+    font-weight: 400;
+    margin-right: 2px;
+}
+
+.pill-status {
+    background: rgba(124, 92, 191, .18);
+    color: #a882f5;
+    border: 1px solid rgba(124, 92, 191, .35);
+}
+
+.pill-type {
+    background: rgba(61, 230, 142, .12);
+    color: var(--accent2);
+    border: 1px solid rgba(61, 230, 142, .3);
+}
+
+.pill-ep {
+    background: rgba(224, 92, 138, .15);
+    color: #f08ab0;
+    border: 1px solid rgba(224, 92, 138, .3);
+}
+
+.pill-genre {
+    background: var(--pill-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+/* Synopsis */
+.section-label {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    margin-bottom: 8px;
+}
+
+.synopsis {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #b0b0c8;
+    max-width: 700px;
+}
+
+/* ── BOTTOM CARDS ROW ── */
+.cards-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.info-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+}
+
+.info-card-title {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--muted);
+    margin-bottom: 14px;
+}
+
+/* Cast */
+.cast-list {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.cast-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.cast-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--pill-bg);
+    border: 2px solid var(--border);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+}
+
+.cast-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cast-name {
+    font-size: 10px;
+    color: var(--muted);
+    max-width: 50px;
+    text-align: center;
+}
+
+.cast-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--border);
+    margin: 0 2px;
+}
+
+/* Where to Watch */
+.streaming-list {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.stream-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--pill-bg);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    transition: all .2s;
+    cursor: pointer;
+}
+
+.stream-icon:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* ── EPISODES SECTION ── */
+.episodes-section {
+    margin-top: 28px;
+}
+
+.ep-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.ep-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 1.5px;
+    color: var(--text);
+}
+
+/* Season dropdown */
+.season-select-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.season-select {
+    appearance: none;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 9px 36px 9px 14px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    outline: none;
+    transition: border-color .2s;
+}
+
+.season-select:hover,
+.season-select:focus {
+    border-color: var(--accent);
+}
+
+.season-select option {
+    background: var(--card);
+}
+
+.select-arrow {
+    position: absolute;
+    right: 12px;
+    pointer-events: none;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* Episode list */
+.ep-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ep-item {
+    display: grid;
+    grid-template-columns: 44px 1fr auto auto;
+    align-items: center;
+    gap: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 13px 16px;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.ep-item:hover {
+    border-color: var(--accent);
+    background: rgba(124, 92, 191, .07);
+    transform: translateX(3px);
+}
+
+.ep-item.watched {
+    opacity: .6;
+}
+
+.ep-item.watched .ep-num {
+    color: var(--accent2);
+}
+
+.ep-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: var(--muted);
+    text-align: center;
+}
+
+.ep-info {}
+
+.ep-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.ep-meta {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+}
+
+.ep-bar-wrap {
+    width: 160px;
+}
+
+.ep-bar-bg {
+    height: 4px;
+    background: var(--pill-bg);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.ep-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent3));
+    border-radius: 2px;
+    transition: width .4s ease;
+}
+
+.ep-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--star);
+    min-width: 46px;
+    justify-content: flex-end;
+}
+
+.ep-rating svg {
+    flex-shrink: 0;
+}
+
+/* Watched tick */
+.ep-tick {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: transparent;
+    transition: all .2s;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.ep-tick.done {
+    background: var(--accent2);
+    border-color: var(--accent2);
+    color: #000;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
